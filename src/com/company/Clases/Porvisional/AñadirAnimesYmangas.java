@@ -1,16 +1,9 @@
 package com.company.Clases.Porvisional;
 
 import com.company.Clases.Anime;
-import com.company.Clases.Categorias.BaseDeAnimesYMangas;
 import com.company.Clases.Manga;
-import com.company.DAO.DAOAnimes.DAOAnimeSerializable;
-import com.company.DAO.DAOFactory;
-import com.company.DAO.DAOSerializable;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.util.Date;
-import java.util.List;
 import java.util.Random;
 
 public class AñadirAnimesYmangas implements Serializable {
@@ -36,7 +29,7 @@ public class AñadirAnimesYmangas implements Serializable {
         for (int i = 0; i < nombre.length; i++) {
             int calificacion = random.nextInt(5);
             int duracion = random.nextInt(50);
-            int fecha = random.nextInt();
+            int fecha = random.nextInt(2021);
             Anime anime = new Anime(nombre[i],calificacion,duracion,fecha);
             baseDeAnimesYMangas.añadirAnime(anime);
         }

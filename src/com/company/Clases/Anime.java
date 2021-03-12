@@ -24,4 +24,20 @@ public class Anime implements Serializable {
                 ", fechaSalida=" + fechaSalida +
                 '}';
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public int getCalificacion() {
+        return calificacion;
+    }
+
+    public int getDuracion() {
+        return duracion;
+    }
+
+    public int getFechaSalida() {
+        return fechaSalida;
+    }
 }

@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * @
+ */
 public class Usuario implements Serializable {
 private String nombre,correo,contraseña;
 private HashMap<Categoria, List<Anime>> animes;
@@ -20,6 +23,9 @@ private HashMap<Categoria,List<Manga>> mangas;
         this.mangas = new HashMap<>();
     }
 
+    /**
+     * @return
+     */
     public String getNombre() {
         return nombre;
     }
@@ -50,6 +56,14 @@ private HashMap<Categoria,List<Manga>> mangas;
         }
         mangaHas.add(manga);
         mangas.put(categoria,mangaHas);
+    }
+
+    public HashMap<Categoria, List<Anime>> getAnimes() {
+        return animes;
+    }
+
+    public HashMap<Categoria, List<Manga>> getMangas() {
+        return mangas;
     }
 
     @Override

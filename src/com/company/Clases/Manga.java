@@ -26,4 +26,20 @@ public class Manga implements Serializable {
                 ", fechaSalida=" + fechaSalida +
                 '}';
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public int getCalificacion() {
+        return calificacion;
+    }
+
+    public int getPaginas() {
+        return paginas;
+    }
+
+    public int getFechaSalida() {
+        return fechaSalida;
+    }
 }

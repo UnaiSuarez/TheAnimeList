@@ -1,4 +1,4 @@
-package com.company.Clases.Categorias;
+package com.company.Clases.Porvisional;
 
 import com.company.Clases.Anime;
 import com.company.Clases.Manga;

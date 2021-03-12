@@ -13,13 +13,16 @@ public class GestorMenu {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Menu principal");
         System.out.println("--------------");
-        System.out.print("1) Iniciar sesión\n2) Registrarse\nOpción --> ");
+        System.out.print("1) Iniciar sesión\n2) Registrarse\n3) Salir\nOpción --> ");
         Integer opcion = Integer.valueOf(scanner.nextLine());
         if (opcion==1){
-
+            gestorUsuario.iniciarSesion();
         }
         else if (opcion==2){
             gestorUsuario.creaUsuarios();
+        }
+        else {
+            return;
         }
 
 
