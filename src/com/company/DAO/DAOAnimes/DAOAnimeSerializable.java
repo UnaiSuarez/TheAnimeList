@@ -32,4 +32,9 @@ public class DAOAnimeSerializable extends DAOSerializable implements DAOAnime {
         animes.add(anime);
         this.save(animes);
     }
+
+    public void delete(int posicion){
+        animes.remove(posicion);
+        this.save(animes);
+    }
 }

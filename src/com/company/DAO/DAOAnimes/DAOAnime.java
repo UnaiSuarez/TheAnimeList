@@ -7,4 +7,5 @@ import java.util.List;
 public interface DAOAnime {
   public List<Anime> getAnime();
     public void add(Anime anime);
+    public void delete(int posicion);
 }

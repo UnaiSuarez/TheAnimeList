@@ -34,6 +34,13 @@ public class GestorUsuario {
         GestorCifradoContraseña gestorCifradoContraseña = new GestorCifradoContraseña();
         String contraseña = gestorCifradoContraseña.codificaCesar(contraseña1);
         Usuario usuario = new Usuario(nombre,correo,contraseña);
+        System.out.println("¿Desea crear una cuenta de administardor?");
+        String admin = scanner.nextLine();
+        if (admin.equals("si")){
+            System.out.println("Codigo---> ");
+            Integer codigo = Integer.valueOf(scanner.nextLine());
+            usuario.setAdmin(codigo);
+        }
         DAOFactory.getInstance().getDaoUsuario().add(usuario);
         GestorMenu gestorMenu = new GestorMenu();
         gestorMenu.MenuPrincipal();
@@ -80,9 +87,9 @@ public class GestorUsuario {
         }
         else {
             while (opcionContraseñaBoo){
-                System.out.println("Escriba su contraseña---> ");
+                System.out.print("Escriba su contraseña---> ");
                 String contraseña1 = scanner.nextLine();
-                System.out.println("Repita su contraseña---> ");
+                System.out.print("Repita su contraseña---> ");
                 String contraseña2 = scanner.nextLine();
                 if (contraseña1.equals(contraseña2)){
                     contraseña = contraseña1;
@@ -97,7 +104,7 @@ public class GestorUsuario {
         return contraseña;
     }
 
-    private boolean comprobarCorreo(String correo){
+    public boolean comprobarCorreo(String correo){
          usuarios = DAOFactory.getInstance().getDaoUsuario().getUsuario();
         for (int i = 0; i < usuarios.size(); i++) {
             if (usuarios.get(i).getCorreo().equals(correo)){
@@ -108,7 +115,7 @@ public class GestorUsuario {
         return true;
     }
 
-    private boolean comprobarNombre(String nombre){
+    public boolean comprobarNombre(String nombre){
         usuarios = DAOFactory.getInstance().getDaoUsuario().getUsuario();
         for (int i = 0; i < usuarios.size(); i++) {
             if (usuarios.get(i).getNombre().equals(nombre)){
@@ -134,8 +141,14 @@ public class GestorUsuario {
             String c = usuarios.get(i).getCorreo();
             String con = usuarios.get(i).getContraseña();
             if (user.equals(correo)&&con.equals(contraseña)||correo.equals(c)&&con.equals(contraseña)){
+                System.out.println("--------------------------");
                 System.out.println("inicio de sesion correcta");
-                System.out.println("Bienvenido "+usuarios.get(i).getNombre());
+                if (usuarios.get(i).getAdmin()){
+                    System.out.println("Bienvenido "+usuarios.get(i).getNombre()+", administrador.");
+                }
+                else {
+                    System.out.println("Bienvenido "+usuarios.get(i).getNombre());
+                }
                 GestroAplicacion gestroAplicacion = new GestroAplicacion(usuarios.get(i));
                 gestroAplicacion.aplicacion();
             }

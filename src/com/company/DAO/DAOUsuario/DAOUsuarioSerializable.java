@@ -32,4 +32,10 @@ public class DAOUsuarioSerializable extends DAOSerializable implements DAOUsuari
         usuarios.add(usuario);
         this.save(usuarios);
     }
+
+
+    public void delete(int posicion){
+        usuarios.remove(posicion);
+        this.save(usuarios);
+    }
 }

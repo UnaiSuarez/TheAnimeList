@@ -21,8 +21,11 @@ public class GestorMenu {
         else if (opcion==2){
             gestorUsuario.creaUsuarios();
         }
+        else if (opcion==3){
+            System.out.println("Adios");
+        }
         else {
-            return;
+            System.out.println("no es una opcion");
         }
 
 

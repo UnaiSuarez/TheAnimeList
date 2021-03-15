@@ -1,6 +1,7 @@
 package com.company.Clases;
 
 import com.company.Clases.Categorias.Categoria;
+import com.company.Gestores.GestorUsuario;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -11,7 +12,9 @@ import java.util.List;
  * @
  */
 public class Usuario implements Serializable {
+    GestorUsuario gestorUsuario = new GestorUsuario();
 private String nombre,correo,contraseña;
+private boolean admin;
 private HashMap<Categoria, List<Anime>> animes;
 private HashMap<Categoria,List<Manga>> mangas;
 
@@ -21,6 +24,7 @@ private HashMap<Categoria,List<Manga>> mangas;
         this.contraseña = contraseña;
         this.animes = new HashMap<>();
         this.mangas = new HashMap<>();
+        this.admin = false;
     }
 
     /**
@@ -57,6 +61,40 @@ private HashMap<Categoria,List<Manga>> mangas;
         mangaHas.add(manga);
         mangas.put(categoria,mangaHas);
     }
+
+    public boolean getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(int codigo) {
+        if (codigo == 1234){
+            this.admin = true;
+            System.out.println("Cuenta de administrador activa.");
+        }
+        else {
+            this.admin = false;
+            System.out.println("El codigo no es correcto.");
+            System.out.println("Se creará una cuenta nromal, puede cambiarlo mas adelante.");
+        }
+
+    }
+
+    public void setNombre(String nombre) {
+        if (gestorUsuario.comprobarNombre(nombre)){
+            this.nombre = nombre;
+        }
+    }
+
+    public void setCorreo(String correo) {
+        if (gestorUsuario.comprobarCorreo(correo)){
+            this.correo = correo;
+        }
+    }
+
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
+    }
+
 
     public HashMap<Categoria, List<Anime>> getAnimes() {
         return animes;

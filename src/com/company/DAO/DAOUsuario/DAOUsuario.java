@@ -8,4 +8,5 @@ import java.util.List;
 public interface DAOUsuario {
     public List<Usuario> getUsuario();
     public void add(Usuario usuario);
+    public void delete(int posicion);
 }

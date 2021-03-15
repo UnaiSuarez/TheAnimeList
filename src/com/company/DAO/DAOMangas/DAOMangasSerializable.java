@@ -32,4 +32,9 @@ public class DAOMangasSerializable extends DAOSerializable implements DAOMangas{
         mangas.add(manga);
         this.save(mangas);
     }
+
+    public void delete(int posicion){
+        mangas.remove(posicion);
+        this.save(mangas);
+    }
 }

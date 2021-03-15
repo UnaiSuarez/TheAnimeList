@@ -8,4 +8,5 @@ import java.util.List;
 public interface DAOMangas {
     public List<Manga> getManga();
     public void add(Manga manga);
+    public void delete(int posicion);
 }
