@@ -12,7 +12,7 @@ import java.util.List;
  * @
  */
 public class Usuario implements Serializable {
-    GestorUsuario gestorUsuario = new GestorUsuario();
+
 private String nombre,correo,contraseña;
 private boolean admin;
 private HashMap<Categoria, List<Anime>> animes;
@@ -80,15 +80,11 @@ private HashMap<Categoria,List<Manga>> mangas;
     }
 
     public void setNombre(String nombre) {
-        if (gestorUsuario.comprobarNombre(nombre)){
             this.nombre = nombre;
-        }
     }
 
     public void setCorreo(String correo) {
-        if (gestorUsuario.comprobarCorreo(correo)){
             this.correo = correo;
-        }
     }
 
     public void setContraseña(String contraseña) {

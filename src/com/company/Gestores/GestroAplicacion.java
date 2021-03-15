@@ -6,12 +6,13 @@ import com.company.Clases.Manga;
 import com.company.Clases.Usuario;
 import com.company.DAO.DAOFactory;
 
+import java.security.Guard;
 import java.util.List;
 import java.util.Scanner;
 
 public class GestroAplicacion {
+
     Scanner scanner = new Scanner(System.in);
-    GestorMenu gestorMenu = new GestorMenu();
     Usuario usuario;
     private List<Anime> animes = DAOFactory.getInstance().getDaoAnime().getAnime();
     private List<Manga> mangas = DAOFactory.getInstance().getDaoMangas().getManga();
@@ -23,6 +24,8 @@ public class GestroAplicacion {
     }
 
     public void aplicacion() {
+        GUIGestorMenu guiGestorMenu = new GUIGestorMenu();
+        guiGestorMenu.setVisible(false);
         Ajustes ajustes = new Ajustes(usuario);
         System.out.println("----------------------");
         System.out.println("¿Que desea hacer?");
@@ -51,7 +54,7 @@ public class GestroAplicacion {
             verAnimesYMangas();
         } else if (opcion == 3) {
             System.out.println("Hasta la proxima " + usuario.getNombre() + " ;)");
-            gestorMenu.MenuPrincipal();
+            guiGestorMenu.setVisible(true);
         } else if (opcion == 4 && usuario.getAdmin()) {
             añadirAnmimeOManga();
         } else if (opcion == 5 && usuario.getAdmin()) {

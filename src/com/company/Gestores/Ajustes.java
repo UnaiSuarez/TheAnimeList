@@ -5,6 +5,7 @@ import com.company.Clases.Usuario;
 import java.util.Scanner;
 
 public class Ajustes {
+    GestorUsuario gestorUsuario = new GestorUsuario();
     Usuario usuario;
     Scanner scanner = new Scanner(System.in);
     public Ajustes(Usuario usuario) {
@@ -25,14 +26,24 @@ public class Ajustes {
             System.out.println("----------------------");
             System.out.print("Nuevo nombre---> ");
             String nombre = scanner.nextLine();
-            usuario.setNombre(nombre);
+            if (gestorUsuario.comprobarNombre(nombre)){
+                usuario.setNombre(nombre);
+            }
+            else {
+                System.out.println("El nombre ya esta en uso.");
+            }
             ajustes();
         }
         else if (opcion==2){
             System.out.println("----------------------");
             System.out.print("Nuevo correo---> ");
             String correo = scanner.nextLine();
-            usuario.setCorreo(correo);
+            if (gestorUsuario.comprobarNombre(correo)){
+                usuario.setCorreo(correo);
+            }
+            else {
+                System.out.println("El correo ya esta en uso.");
+            }
             ajustes();
         }
         else if (opcion==3){

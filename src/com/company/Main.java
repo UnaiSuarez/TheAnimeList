@@ -1,13 +1,12 @@
 package com.company;
 
-import com.company.Clases.Porvisional.AñadirAnimesYmangas;
-import com.company.Gestores.GestorMenu;
+import com.company.Gestores.GUIGestorMenu;
 
 public class Main {
 
     public static void main(String[] args) {
-      GestorMenu gestorMenu = new GestorMenu();
-        gestorMenu.MenuPrincipal();
+      GUIGestorMenu guiGestorMenu = new GUIGestorMenu();
+        guiGestorMenu.setVisible(true);
 
     }
 }

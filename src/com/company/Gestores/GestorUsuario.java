@@ -42,8 +42,8 @@ public class GestorUsuario {
             usuario.setAdmin(codigo);
         }
         DAOFactory.getInstance().getDaoUsuario().add(usuario);
-        GestorMenu gestorMenu = new GestorMenu();
-        gestorMenu.MenuPrincipal();
+        GUIGestorMenu guiGestorMenu = new GUIGestorMenu();
+        guiGestorMenu.setVisible(true);
 
     }
 
