@@ -1,7 +1,6 @@
 package com.company.Clases;
 
 import com.company.Clases.Categorias.Categoria;
-import com.company.Gestores.GestorUsuario;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -66,16 +65,8 @@ private HashMap<Categoria,List<Manga>> mangas;
         return admin;
     }
 
-    public void setAdmin(int codigo) {
-        if (codigo == 1234){
-            this.admin = true;
-            System.out.println("Cuenta de administrador activa.");
-        }
-        else {
-            this.admin = false;
-            System.out.println("El codigo no es correcto.");
-            System.out.println("Se creará una cuenta nromal, puede cambiarlo mas adelante.");
-        }
+    public void setAdmin() {
+        this.admin = true;
 
     }
 

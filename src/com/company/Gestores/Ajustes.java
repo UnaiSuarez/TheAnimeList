@@ -5,6 +5,7 @@ import com.company.Clases.Usuario;
 import java.util.Scanner;
 
 public class Ajustes {
+    /*
     GestorUsuario gestorUsuario = new GestorUsuario();
     Usuario usuario;
     Scanner scanner = new Scanner(System.in);
@@ -52,7 +53,7 @@ public class Ajustes {
         else if (opcion==4){
             System.out.print("Para activar el administrador ponga el codigo--->");
             int codigo = Integer.parseInt(scanner.nextLine());
-            usuario.setAdmin(codigo);
+            usuario.setAdmin();
         }
         else if (opcion==5){
             return;
@@ -88,4 +89,6 @@ public class Ajustes {
         }
         ajustes();
     }
+
+     */
 }

@@ -5,25 +5,28 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 public class GUIGestorMenu extends JFrame{
-    GestorUsuario gestorUsuario = new GestorUsuario();
+    GUIGestorUsuario guiGestorUsuario = new GUIGestorUsuario();
+    GUIGestorRegistro guiGestorRegistro = new GUIGestorRegistro();
     private JPanel inicio;
     private JButton iniciarSesion;
     private JButton registrasrse;
     private JButton salir;
 
     public GUIGestorMenu(){
-        setSize(400,500);
+        setSize(500,500);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         add(inicio);
         iniciarSesion.addActionListener(e -> {
             dispose();
-            gestorUsuario.iniciarSesion();
+            guiGestorUsuario.setVisible(true);
         });
         registrasrse.addActionListener(e -> {
-            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            gestorUsuario.creaUsuarios();
+            dispose();
+            guiGestorRegistro.setVisible(true);
         });
         salir.addActionListener(e -> {
+            JOptionPane.showMessageDialog(this,"Hasta la próxima ;)","DESPEDIDA",JOptionPane.PLAIN_MESSAGE);
+            System.exit( 0 );
         });
     }
 
