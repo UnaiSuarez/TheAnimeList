@@ -29,7 +29,6 @@ public class GUIGestorAplicación extends JFrame{
     private JButton cerrarAnimeLista;
     private JButton cerrarMangaLista;
     private JTextField inputNombreAnime;
-    private JSpinner inputFechaAnime;
     private JTextField inputCalificacionAnime;
     private JTextField inputDuracionAnime;
     private JButton agregarAnime;
@@ -40,6 +39,7 @@ public class GUIGestorAplicación extends JFrame{
     private JPanel guardarAnime;
     private JList animeList;
     private JButton guardarAnimeSeleccionado;
+    private JTextField inputFechaAnime;
     private Usuario usuario;
 
     private List<Anime> animes;
@@ -94,9 +94,10 @@ public class GUIGestorAplicación extends JFrame{
         System.out.println(DAOFactory.getInstance().getDaoAnime().getAnime());;
 
         String nombre = inputNombreAnime.getText();
-        String calificacion = inputCalificacionAnime.getText();
-        String duracion = inputDuracionAnime.getText();
-        //Anime anime = new Anime(nombre,calificacion,duracion,fecha);
+        int calificacion= Integer.parseInt(inputCalificacionAnime.getText());
+        int duracion = Integer.parseInt(inputDuracionAnime.getText());
+        int fecha = Integer.parseInt(inputFechaAnime.getText());
+        Anime anime = new Anime(nombre,calificacion,duracion,fecha);
         agregarAnime.addActionListener(e -> {
         //  DAOFactory.getInstance().getDaoAnime().add(anime);
             System.out.println(DAOFactory.getInstance().getDaoAnime().getAnime());
