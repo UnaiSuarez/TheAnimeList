@@ -6,8 +6,6 @@ import com.company.Clases.Usuario;
 import com.company.DAO.DAOFactory;
 
 import javax.swing.*;
-import javax.swing.event.ListSelectionListener;
-import java.util.Date;
 import java.util.List;
 
 public class GUIGestorAplicación extends JFrame{
@@ -18,38 +16,43 @@ public class GUIGestorAplicación extends JFrame{
     private JButton salir;
     private JPanel administradorPanel;
     private JButton agregarAnimeDesplegable;
-    private JPanel agregarMangaLista;
+    private JPanel agregarMangaPanel;
     private JButton agregarMangaDesplegable;
     private JTextField inputNombreManga;
     private JTextField inputFechaManga;
     private JTextField inputCalificacionManga;
     private JTextField inputDuracionManga;
     private JButton agregarManga;
-    private JPanel agragarAnimeLista;
-    private JButton cerrarAnimeLista;
+    private JPanel agregarAnimePanel;
     private JButton cerrarMangaLista;
     private JTextField inputNombreAnime;
     private JTextField inputCalificacionAnime;
     private JTextField inputDuracionAnime;
     private JButton agregarAnime;
-    private JPanel guardarVerAnime;
+    private JPanel guardarVerAnimePanel;
     private JButton guardarAnimeNuevo;
     private JButton verAnimes;
     private JButton cerrarEditarAnimes;
-    private JPanel guardarAnime;
+    private JPanel guardarAnimePanel;
     private JList animeList;
     private JButton guardarAnimeSeleccionado;
     private JTextField inputFechaAnime;
+    private JButton botonEliminarAnime;
+    private JPanel eliminarAnimePanel;
+    private JList listaAnime;
+    private JButton eliminarAnimeSeleccionado;
+    private JPanel panelUsuario;
     private Usuario usuario;
 
     private List<Anime> animes;
 
 
     public GUIGestorAplicación(Usuario usuario){
-        agragarAnimeLista.setVisible(false);
-        agregarMangaLista.setVisible(false);
-        guardarVerAnime.setVisible(false);
-        guardarAnime.setVisible(false);
+        agregarAnimePanel.setVisible(false);
+        agregarMangaPanel.setVisible(false);
+        guardarVerAnimePanel.setVisible(false);
+        guardarAnimePanel.setVisible(false);
+        eliminarAnimePanel.setVisible(false);
         setSize(500,500);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         add(aplicacionUsuario);
@@ -59,29 +62,31 @@ public class GUIGestorAplicación extends JFrame{
             this.administradorPanel.setVisible(false);
         }
         editarAnimes.addActionListener(e -> {
-            guardarVerAnime.setVisible(true);
+            guardarVerAnimePanel.setVisible(true);
         });
         guardarAnimeNuevo.addActionListener(e -> {
             setAnimeList();
-            guardarAnime.setVisible(true);
+            guardarAnimePanel.setVisible(true);
             guardarAnimeFuncion();
         });
         cerrarEditarAnimes.addActionListener(e -> {
-            guardarVerAnime.setVisible(false);
-            guardarAnime.setVisible(false);
+            guardarVerAnimePanel.setVisible(false);
+            guardarAnimePanel.setVisible(false);
         });
 
-        agregarAnimeDesplegable.addActionListener(e -> {
-            agragarAnimeLista.setVisible(true);
-        });
-        cerrarAnimeLista.addActionListener(e -> {
-            agragarAnimeLista.setVisible(false);
-        });
         agregarMangaDesplegable.addActionListener(e -> {
-            agregarMangaLista.setVisible(true);
+            agregarMangaPanel.setVisible(true);
         });
         cerrarMangaLista.addActionListener(e -> {
-            agregarMangaLista.setVisible(false);
+            agregarMangaPanel.setVisible(false);
+        });
+        agregarAnimeDesplegable.addActionListener(e -> {
+            if (agregarAnimePanel.isVisible()){
+                agregarAnimePanel.setVisible(false);
+            }
+            else {
+                agregarAnimePanel.setVisible(true);
+            }
         });
         salir.addActionListener(e -> {
                 JOptionPane.showMessageDialog(this,"Sesion cerrada ","Cierre Sesion",JOptionPane.PLAIN_MESSAGE);
@@ -91,17 +96,26 @@ public class GUIGestorAplicación extends JFrame{
     }
 
     private void agrgarAnime(){
-        System.out.println(DAOFactory.getInstance().getDaoAnime().getAnime());;
 
+try {
+    System.out.println(DAOFactory.getInstance().getDaoAnime().getAnime());
+
+    agregarAnime.addActionListener(e -> {
         String nombre = inputNombreAnime.getText();
         int calificacion= Integer.parseInt(inputCalificacionAnime.getText());
         int duracion = Integer.parseInt(inputDuracionAnime.getText());
         int fecha = Integer.parseInt(inputFechaAnime.getText());
         Anime anime = new Anime(nombre,calificacion,duracion,fecha);
-        agregarAnime.addActionListener(e -> {
-        //  DAOFactory.getInstance().getDaoAnime().add(anime);
-            System.out.println(DAOFactory.getInstance().getDaoAnime().getAnime());
-        });
+        DAOFactory.getInstance().getDaoAnime().add(anime);
+        System.out.println(DAOFactory.getInstance().getDaoAnime().getAnime());
+    });
+}
+catch (Exception e){
+    inputCalificacionAnime.setText("0");
+    inputDuracionAnime.setText("0");
+    inputFechaAnime.setText("0");
+}
+
     }
 
     private void guardarAnimeFuncion(){
@@ -112,6 +126,8 @@ public class GUIGestorAplicación extends JFrame{
             System.out.println(usuario.getAnimes());
         });
     }
-
+private void eliminarAnimeFuncion(){
+        
+}
     private void setAnimeList(){animeList.setListData(DAOFactory.getInstance().getDaoAnime().getAnime().toArray());}
 }
