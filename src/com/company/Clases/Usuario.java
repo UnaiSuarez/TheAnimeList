@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * @
+ * @author unai suarez
  */
 public class Usuario implements Serializable {
 
@@ -17,6 +17,12 @@ private boolean admin;
 private HashMap<Categoria, List<Anime>> animes;
 private HashMap<Categoria,List<Manga>> mangas;
 
+    /**
+     *
+     * @param nombre nombre que tendra el usuario
+     * @param correo correo que tendra el usuario
+     * @param contraseña contraseña que tendra el usuario
+     */
     public Usuario(String nombre, String correo, String contraseña) {
         this.nombre = nombre;
         this.correo = correo;
@@ -27,22 +33,34 @@ private HashMap<Categoria,List<Manga>> mangas;
     }
 
     /**
-     * @return
+     * @return devuelve el nombre de usuario
      */
     public String getNombre() {
         return nombre;
     }
 
+    /**
+     *
+     * @return devuelve el correo del usuario
+     */
     public String getCorreo() {
         return correo;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getContraseña() {
         return contraseña;
     }
 
 
-
+    /**
+     *
+     * @param anime
+     * @param categoria
+     */
     public void añadirAnime(Anime anime, Categoria categoria){
         List<Anime> animeHas = animes.get(categoria);
         if (animeHas == null){
@@ -52,6 +70,11 @@ private HashMap<Categoria,List<Manga>> mangas;
         animes.put(categoria,animeHas);
     }
 
+    /**
+     *
+     * @param manga
+     * @param categoria
+     */
     public void añadirManga(Manga manga, Categoria categoria){
         List<Manga> mangaHas = mangas.get(categoria);
         if (mangaHas == null){
@@ -61,6 +84,10 @@ private HashMap<Categoria,List<Manga>> mangas;
         mangas.put(categoria,mangaHas);
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean getAdmin() {
         return admin;
     }
