@@ -7,7 +7,7 @@ package com.company.Gestores;
 public class GestorCifradoContraseña {
     /**
      *
-     * @param texto se refiere a la contraseña que qeuremos cifrar
+     * @param texto se refiere a la contraseña que queremos cifrar
      * @return devuelve el parametro texto(la contraseña) cifrado
      */
     public String codificaCesar(String texto){

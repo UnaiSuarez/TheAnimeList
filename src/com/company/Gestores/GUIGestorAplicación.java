@@ -65,6 +65,8 @@ public class GUIGestorAplicación extends JFrame{
     private JButton verSeguidosMangaBoton;
     private JButton eliminarMangaSeleccionado;
     private JList listaMangasEliminar;
+    private JButton ajustesBoton;
+    private JPanel ajustesPanel;
     private Usuario usuario;
 
     private List<Anime> animes;
